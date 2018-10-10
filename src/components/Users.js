@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doGetUsers, doDeleteUser } from '../actions/Users';
+import { doGetUsers, doDeleteUser, doUpdateUserRole } from '../actions/Users';
 
 
 class Users extends Component {
@@ -25,10 +25,25 @@ class Users extends Component {
             return false;
     }
 
+    updateRole =(e, id) => {
+        const { value } = e.target;
+        if(value) {
+            if(window.confirm('Do you want to change the role of a User ?')) {
+                this.props.doUpdateUserRole({url: 'http://10.100.110.120:8080/update/'+ id, data: { roles: value}});
+                setTimeout(() => {
+                    this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
+                }, 1000)
+            } else 
+                return false;
+        } else 
+            return false;
+    };
+
     render() {
         
         const userObj = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
         let { users } = this.props.UsersData;
+        var userRoles = ['admin', 'manager', 'guest'];
         if(users.length)
             users = users.filter((user) => user._id !== userObj._id);
         const userList = users.length ? (
@@ -39,7 +54,10 @@ class Users extends Component {
                         <th>Email</th>
                         <th>Phone No</th>
                         <th>Roles</th>
-                        <th>Actions</th>
+                        {
+                            userObj && userObj.roles === 'admin' && <React.Fragment><th>Assign Roles</th>
+                            <th>Actions</th></React.Fragment>
+                        }
                     </tr>
                     </thead>
                     <tbody>
@@ -50,7 +68,18 @@ class Users extends Component {
                         <td>{user.emailID}</td>
                         <td>{user.phoneNo}</td>
                         <td>{user.roles}</td>
-                        <td><i style={{cursor: 'pointer'}} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
+                        {
+                            userObj && userObj.roles === 'admin' && <React.Fragment><td>
+                            <select className="browser-default" onChange={(e) => this.updateRole(e, user.userId)} name={'gender'}>
+                            <option value="">Select Role</option>
+                            {
+                                userRoles.map((role) => <option key={role} value={role}>{role.charAt(0).toUpperCase() + role.slice(1)}</option>)
+                            }
+                            </select>
+                        </td>
+                        <td><i style={{cursor: 'pointer'}} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td></React.Fragment>
+
+                        }
                         </tr>
                         )
                     }) }
@@ -78,4 +107,4 @@ const mapToProps = (state, props) => {
     }
 };
 
-export default connect(mapToProps, { doGetUsers, doDeleteUser })(Users);
+export default connect(mapToProps, { doGetUsers, doDeleteUser, doUpdateUserRole })(Users);

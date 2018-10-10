@@ -14,26 +14,13 @@ const dataService = {
     },
 
     put: (url, data) => {
-        const options = {};
-        options.body = data;
-        options.method = 'PUT';
-        options.headers = {
-            "Content-type": "application/json; charset=UTF-8",
-            "Access-Control-Allow-Origin": '*'
-        };
-        options.body = options.body ? JSON.stringify(options.body) : {};
 
-        return new Promise((resolve, reject) => axios.put(url, options).then((data) => resolve(data)).catch((err) => reject(err)));
+        return new Promise((resolve, reject) => axios.put(url, data).then((data) => resolve(data)).catch((err) => reject(err)));
     },
 
-    delete: (url) => {
-        const options = {};
-        options.method = 'DELETE';
-        options.headers = {
-            "Access-Control-Allow-Origin": '*'
-        };  
+    delete: (url, data) => {
 
-        return new Promise((resolve, reject) => axios.delete(url, options).then((data) => resolve(data)).catch((err) => reject(err)));
+        return new Promise((resolve, reject) => axios.delete(url, data).then((data) => resolve(data)).catch((err) => reject(err)));
     }
 };
 
