@@ -73,7 +73,7 @@ class Users extends Component {
                             <select className="browser-default" onChange={(e) => this.updateRole(e, user.userId)} name={'gender'}>
                             <option value="">Select Role</option>
                             {
-                                userRoles.map((role) => <option key={role} value={role}>{role.charAt(0).toUpperCase() + role.slice(1)}</option>)
+                                userRoles.filter((r) => r !== user.roles).map((role) => <option key={role} value={role}>{role.charAt(0).toUpperCase() + role.slice(1)}</option>)
                             }
                             </select>
                         </td>

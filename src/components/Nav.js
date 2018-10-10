@@ -42,7 +42,7 @@ class Nav extends Component {
                 <div className="nav-wrapper">
                     &nbsp; &nbsp;
                     {
-                        userInfo ? <React.Fragment><span className="brand-logo">User Management</span> <span class="brand-logo center">{userInfo.roles.charAt(0).toUpperCase() + userInfo.roles.slice(1)}</span></React.Fragment> : <Link to={'/'} className="brand-logo">User Management</Link>
+                        userInfo ? <React.Fragment><span className="brand-logo">User Management</span> <span className="brand-logo center">{userInfo.roles.charAt(0).toUpperCase() + userInfo.roles.slice(1)}</span></React.Fragment> : <Link to={'/'} className="brand-logo">User Management</Link>
                        
                     }
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
