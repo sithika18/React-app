@@ -29,7 +29,7 @@ class Users extends Component {
             this.props.doDeleteUser({ url: 'http://10.100.110.120:8080/delete/' + id });
             setTimeout(() => {
                 this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
-            }, 1000)
+            }, 500)
         }
         else
             return false;
@@ -42,7 +42,7 @@ class Users extends Component {
                 this.props.doUpdateUserRole({ url: 'http://10.100.110.120:8080/update/' + id, data: { roles: value } });
                 setTimeout(() => {
                     this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
-                }, 1000)
+                }, 500)
             } else
                 return false;
         } else
@@ -114,7 +114,7 @@ class Users extends Component {
                                                 }
                                             </select>
                                         </td>
-                                        <td><a className="waves-effect waves-light modal-trigger" href="/modal1"><i style={{ cursor: 'pointer' }} onClick={(e) => this.editUser(e, user.userId)} className="small material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;<i style={{ cursor: 'pointer' }} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
+                                        <td><a className="waves-effect waves-light modal-trigger" color={'black'} href="/modal1"><i style={{ cursor: 'pointer' }} onClick={(e) => this.editUser(e, user.userId)} className="small material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;<i style={{ cursor: 'pointer' }} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
                                     </React.Fragment>
 
                                 }
