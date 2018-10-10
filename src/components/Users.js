@@ -114,7 +114,7 @@ class Users extends Component {
                                                 }
                                             </select>
                                         </td>
-                                        <td><a className="waves-effect waves-light modal-trigger" color={'black'} href="/modal1"><i style={{ cursor: 'pointer' }} onClick={(e) => this.editUser(e, user.userId)} className="small material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;<i style={{ cursor: 'pointer' }} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
+                                        <td><a className="modal-trigger" href="/modal1"><i style={{ cursor: 'pointer' }} onClick={(e) => this.editUser(e, user.userId)} className="small material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;<i style={{ cursor: 'pointer' }} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
                                     </React.Fragment>
 
                                 }
@@ -160,8 +160,8 @@ class Users extends Component {
                     </div>
                     </div>
                     <div className="modal-footer">
-                        <a className="modal-close waves-effect btn waves-green btn-flat">Cancel</a>
-                        <a onClick={this.updateUser} className="modal-close waves-effect btn waves-green btn-flat">Update</a>
+                        <a className="modal-close waves-effect btn waves-green btn-flat">Cancel<i class="small material-icons right">clear</i></a>
+                        <a onClick={this.updateUser} className="modal-close waves-effect btn waves-green btn-flat">Update<i class="small material-icons right">check</i></a>
                     </div>
                 </div>
             </div>
