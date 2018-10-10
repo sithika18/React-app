@@ -62,3 +62,24 @@ export const doUpdateUserRoleFail = (data) => {
         data,
     }
 };
+
+export const doUpdateUser = (data) => {
+    return {
+        type: userTypes.DO_UPDATE_USER,
+        data,
+    }
+};
+
+export const doUpdateUserSuccess = (data) => {
+    return {
+        type: userTypes.DO_UPDATE_USER_SUCCESS,
+        data,
+    }
+};
+
+export const doUpdateUserFail = (data) => {
+    return {
+        type: userTypes.DO_UPDATE_USER_FAIL,
+        data,
+    }
+};

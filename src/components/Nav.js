@@ -10,7 +10,7 @@ class Nav extends Component {
 
     render() {
         const userInfo = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
-        const role = userInfo ? 'Role: ' + userInfo.roles : '';
+        const role = userInfo ? 'Role: ' + userInfo.roles.charAt(0).toUpperCase() + userInfo.roles.slice(1) : '';
         const isUserInfo = userInfo ? userInfo.roles === 'admin' || userInfo.roles === 'manager' ? <li><NavLink to={'/users'}>Users</NavLink></li> : null : null;
         const userDetails = userInfo ? (
             <React.Fragment>

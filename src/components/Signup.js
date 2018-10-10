@@ -80,20 +80,20 @@ class Signup extends Component {
                                             <span className={'helper-text'} data-error={'Invalid Email'}></span>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="input-field col s10">
-                                            <Field component="input" type="password" name="password" className={'validate'} required />
-                                            <label htmlFor="password">Password</label>
-                                            <span className={'helper-text'} data-error={'Password Required'}></span>
+                                        <div className="row">
+                                            <div className="input-field col s10">
+                                                <Field component="input" type="password" name="password" className={'validate'} required />
+                                                <label htmlFor="password">Password</label>
+                                                <span className={'helper-text'} data-error={'Password Required'}></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col s10">
-                                            <Field component="input" type="password" name="pswrepeat" className={'validate'} required />
-                                            <label htmlFor="psw-repeat">Repeat Password</label>
-                                            <span className={'helper-text'} data-error={'Confirm Password Required'}></span>
+                                        <div className="row">
+                                            <div className="input-field col s10">
+                                                <Field component="input" type="password" name="pswrepeat" className={'validate'} required />
+                                                <label htmlFor="psw-repeat">Repeat Password</label>
+                                                <span className={'helper-text'} data-error={'Confirm Password Required'}></span>
+                                            </div>
                                         </div>
-                                    </div>
                                     <p>By creating an account you agree to our <a style={{ color: 'dodgerblue' }}>Terms &amp; Privacy</a>.</p>
                                     <div className="clearfix">
                                         <button type="submit" className="btn waves-effect waves-light">Sign Up<i className="material-icons right">send</i></button>

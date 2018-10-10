@@ -39,8 +39,21 @@ function* doUpdateUserRole(obj) {
     }
 }
 
+function* doUpdateUser(obj) {
+    try {
+        const user = yield call(dataService.put, obj.data.url, obj.data.data);
+        yield put(userActions.doUpdateUserSuccess(user));
+        toastService.successToast('User Updated Successfully');
+    }
+    catch(error) {
+        yield put(userActions.doUpdateUserFail(error));
+        toastService.errorToast('User Update Failed');
+    }
+}
+
 export default function* rootPostSaga() {
     yield takeLatest(userTypes.DO_GET_USER, doGetUsers)
     yield takeLatest(userTypes.DO_DELETE_USER, doDeleteUser)
     yield takeLatest(userTypes.DO_UPDATE_USER_ROLE, doUpdateUserRole)
+    yield takeLatest(userTypes.DO_UPDATE_USER, doUpdateUser)
 }

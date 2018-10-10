@@ -81,6 +81,29 @@ const userReducer = (state = initState, action) => {
                 errStr: ''
             }
         }
+        case userActions.DO_UPDATE_USER: {
+            return {
+                ...state,
+                isLoading: true,
+            }
+        }
+        case userActions.DO_UPDATE_USER_FAIL: {
+            return {
+                ...state,
+                isLoading: false,
+                error: action.data,
+                isError: true,
+                errStr: 'error'
+            }
+        }
+        case userActions.DO_UPDATE_USER_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                errStr: ''
+            }
+        }
         default:
             return {
                 ...state
