@@ -31,11 +31,11 @@ function* doUpdateUserRole(obj) {
     try {
         const user = yield call(dataService.put, obj.data.url, obj.data.data);
         yield put(userActions.doUpdateUserRoleSuccess(user));
-        toastService.successToast('Updated Successfully');
+        toastService.successToast('Role Updated Successfully');
     }
     catch(error) {
         yield put(userActions.doUpdateUserRoleFail(error));
-        toastService.errorToast('Updated Failed');
+        toastService.errorToast('Role Update Failed');
     }
 }
 
